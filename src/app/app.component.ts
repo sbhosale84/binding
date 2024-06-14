@@ -6,10 +6,12 @@ import { Component } from '@angular/core';
     <button [attr.aria-label]="ariaLabel">Click me</button>
     <div [class.active]="isActive">class binding</div>
     <div [style.color]="color">style binding</div>
-    <button (click)="clickMe()">event binding</button>
+    <button (click)="toggleColor()">event binding</button>
+    <div>
+      <input [(ngModel)]="name" />
 
-    <input [(ngModel)]="name" />
-    <p>Hello {{ name }}</p> `,
+      <p>Hello {{ name }}</p>
+    </div> `,
 
   styles: [
     `
@@ -28,5 +30,9 @@ export class AppComponent {
   name = 'soham';
   clickMe() {
     alert('button clicked');
+  }
+  toggleColor() {
+    this.isActive = !this.isActive;
+    this.color = true ? 'res' : 'blue';
   }
 }
